@@ -55,6 +55,7 @@ if __name__ == "__main__":
     alphabet = [chr(i + 65) for i in range(num_of_alphabet)]
     print(alphabet)
     for _ in range(num_of_trials):
+        
         abs_chars = shutudai(alphabet)
         ret = kaitou(abs_chars)
         if ret:
