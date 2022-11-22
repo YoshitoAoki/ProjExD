@@ -5,7 +5,6 @@ def shutudai(qa_lst):
     qa = choice(qa_lst)
     print("問題：" + qa["q"])
     kaitou(qa["a"])
-    return qa["a"]
 
 def kaitou (ans_lst):
     st = datetime.datetime.now()
