@@ -12,7 +12,6 @@ def button_click(event):
         ans = eval(s)
         entry.delete(0,tk.END)
         entry.insert(tk.END,ans)
-        pass
     else:
         entry.insert(tk.END,num)
 
