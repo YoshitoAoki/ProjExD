@@ -16,6 +16,14 @@ def button_click(event):
     else:
         entry.insert(tk.END,num)
 
+def Enter_col(event):
+    event.widget["bg"] = "#e6e6fa"
+    event.widget["fg"] = "white"
+
+def Def_col(event):
+    event.widget["bg"] = "white"
+    event.widget["fg"] = "black"
+
 def Memory(event):
     ev = event.widget
     val = ev["text"]
@@ -54,6 +62,8 @@ for op in operators:#＋＝ボタン生成
     button = tk.Button(root,text=f"{op}",width=4,height=2,font=("",30))
     button.grid(row=w,column=h)
     button.bind("<1>",button_click)
+    button.bind("<Enter>",Enter_col)
+    button.bind("<Leave>",Def_col)
     h+=1
     if h%3==0:
         w+=1
@@ -68,7 +78,7 @@ for m in memory:#M+、MRボタン生成
     r += 1
 
 
-clear = tk.Button(root,text="C",width=4,height=2,font=("",30))
+clear = tk.Button(root,text="C",width=4,height=2,font=("",30),bg="red",fg="white")
 clear.grid(row=3,column=4)
 clear.bind("<1>",Clear)
 
