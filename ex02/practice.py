@@ -6,6 +6,10 @@ def button_click(event):
     num = btn["text"]
     # tkm.showinfo("",f"{num}ボタンがクリックされました")
     if num == "=":
+        s = entry.get()
+        ans = eval(s)
+        entry.delete(0,tk.END)
+        entry.insert(tk.END,ans)
         pass
     else:
         entry.insert(tk.END,num)
