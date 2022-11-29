@@ -22,4 +22,13 @@ for b in range(9,-1,-1):
         w+=1
         h=0
 
+operators = ["+","="]
+for op in operators:
+    button = tk.Button(root,text=f"{op}",width=4,height=2,font=("",30))
+    button.grid(row=w,column=h)
+    h+=1
+    if h%3==0:
+        w+=1
+        h=0
+
 root.mainloop()
