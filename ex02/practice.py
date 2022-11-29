@@ -5,7 +5,10 @@ def button_click(event):
     btn = event.widget
     num = btn["text"]
     # tkm.showinfo("",f"{num}ボタンがクリックされました")
-    entry.insert(tk.END,num)
+    if num == "=":
+        pass
+    else:
+        entry.insert(tk.END,num)
 
 root = tk.Tk()
 root.geometry("300x500")
@@ -27,6 +30,7 @@ operators = ["+","="]
 for op in operators:
     button = tk.Button(root,text=f"{op}",width=4,height=2,font=("",30))
     button.grid(row=w,column=h)
+    button.bind("<1>",button_click)
     h+=1
     if h%3==0:
         w+=1
