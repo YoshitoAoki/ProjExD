@@ -26,10 +26,11 @@ def main_proc():
         if key == "Right": mx -= 1
     cx,cy = mx*100+50, my*100+50
     canvas.coords("kokaton", cx, cy)
+    goal()
     root.after(200, main_proc)
 
 def timer():
-    global tmr
+    global tmr,jid
     label["text"] = f"Time:{tmr}秒"
     tmr += 1
     jid = root.after(1000,timer)
@@ -41,11 +42,12 @@ def start():
         timer()
         main_proc()
 
-
-
-
-# def goal():
-#     pass
+def goal():
+    global jid,flag
+    if  cx == (maze_x-2)*100+50 and cy == (maze_y-2)*100+50:
+        root.after_cancel(jid)
+        flag = 0
+        jid = None
         
 
 
@@ -57,10 +59,11 @@ if __name__ == "__main__":
 
     flag = 0
     tmr = 0
+    jid = None
     label = tk.Label(root,font=("",45),fg="black",bg="white")
     label.place(x=1150,y=20)
-
-    maze_lst = mm.make_maze(15,9)
+    maze_x,maze_y = 15,9
+    maze_lst = mm.make_maze(maze_x,maze_y)
     mm.show_maze(canvas,maze_lst)
     # print(maze_list)
 
