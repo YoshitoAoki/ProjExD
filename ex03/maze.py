@@ -29,20 +29,19 @@ def main_proc():
     goal()
     root.after(200, main_proc)
 
-def timer():
+def timer(): #タイマーを表示する関数
     global tmr,jid
     label["text"] = f"Time:{tmr}秒"
     tmr += 1
     jid = root.after(1000,timer)
 
-def start():
+def start(): #Sキーが押された際にスタートさせる関数
     global flag
     flag = 1
-    if key == "s":
-        timer()
-        main_proc()
+    timer()
+    main_proc()
 
-def goal():
+def goal(): #右下のマスについたときに停止させる関数
     global jid,flag
     if  cx == (maze_x-2)*100+50 and cy == (maze_y-2)*100+50:
         root.after_cancel(jid)
