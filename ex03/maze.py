@@ -64,7 +64,6 @@ if __name__ == "__main__":
     maze_x,maze_y = 15,9
     maze_lst = mm.make_maze(maze_x,maze_y)
     mm.show_maze(canvas,maze_lst)
-    # print(maze_list)
 
     mx,my = 1,1
     cx,cy = mx*100+50, my*100+50
