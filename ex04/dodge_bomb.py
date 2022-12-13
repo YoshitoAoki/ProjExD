@@ -68,6 +68,9 @@ def main():
         vy *= y
         scrn_sfc.blit(bomb_sfc,bomb_rct)
         
+        if tori_rct.colliderect(bomb_rct):
+            return
+
         pg.display.update()
         clock.tick(1000)
 
