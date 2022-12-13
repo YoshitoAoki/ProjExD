@@ -1,6 +1,7 @@
 import pygame as pg
 import sys
 from random import *
+import time 
 
 def check_bound(obj_rct,scr_rct):
     #第一引数：こうかとんrectまたは爆弾rect
@@ -29,16 +30,23 @@ def main():
 
     bomb_sfc = pg.Surface((20,20))#正方形の空(透明）のSurface
     bomb_sfc.set_colorkey((0,0,0))
-    pg.draw.circle(bomb_sfc,(255,0,0),(10,10),10)
+    bomb_sfc = pg.image.load("ex04/bakudan.png")
+    bomb_sfc = pg.transform.rotozoom(bomb_sfc,0,0.15)
+    # pg.draw.circle(bomb_sfc,(255,0,0),(10,10),10)
     bomb_rct = bomb_sfc.get_rect()
     bomb_rct.centerx = randint(0,scrn_rct.width)
     bomb_rct.centery = randint(0,scrn_rct.height)
     vx,vy = +1,+1
 
+    font = pg.font.Font(None,150)
+    txt = font.render("GAME OVER",True,(20,20,20))
+        
     while True:
         scrn_sfc.blit(pgbg_sfc,pgbg_rct)
         for event in pg.event.get():
             if event.type == pg.QUIT:
+                # pg.quit()
+                # sys.exit
                 return
         key_dct = pg.key.get_pressed()
         if key_dct[pg.K_UP]:
@@ -69,8 +77,10 @@ def main():
         scrn_sfc.blit(bomb_sfc,bomb_rct)
         
         if tori_rct.colliderect(bomb_rct):
-            return
-
+            scrn_sfc.blit(txt,(420,300))
+            time.sleep(2)
+            # return
+            
         pg.display.update()
         clock.tick(1000)
 
