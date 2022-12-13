@@ -37,6 +37,7 @@ def main():
     bomb_rct.centerx = randint(0,scrn_rct.width)
     bomb_rct.centery = randint(0,scrn_rct.height)
     vx,vy = +1,+1
+    
 
     font = pg.font.Font(None,150)#文字の設定
     txt = font.render("GAME OVER",True,(20,20,20))
