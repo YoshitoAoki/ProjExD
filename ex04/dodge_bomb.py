@@ -7,7 +7,7 @@ def check_bound(obj_rct,scr_rct):
     #第一引数：こうかとんrectまたは爆弾rect
     #第二引数：スクリーンrect
     #範囲内なら＋１、範囲外ならー１
-    x,y = +1,+1
+    x , y = +1 , +1
     if obj_rct.left < scr_rct.left or scr_rct.right < obj_rct.right:
         x = -1
     if obj_rct.top < scr_rct.top or scr_rct.bottom < obj_rct.bottom:
