@@ -37,7 +37,7 @@ def main():
     bomb_rct.centerx = randint(0,scrn_rct.width)
     bomb_rct.centery = randint(0,scrn_rct.height)
     vx,vy = +1,+1
-    
+
 
     font = pg.font.Font(None,150)#文字の設定
     txt = font.render("GAME OVER",True,(20,20,20))
@@ -79,8 +79,9 @@ def main():
         
         if tori_rct.colliderect(bomb_rct):
             scrn_sfc.blit(txt,(420,300))#GAMEOVER表示
-            time.sleep(2)#処理一時停止
-            # return
+            pg.display.update()
+            time.sleep(2)
+            return
             
         pg.display.update()
         clock.tick(1000)
