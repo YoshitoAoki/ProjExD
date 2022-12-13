@@ -30,15 +30,15 @@ def main():
 
     bomb_sfc = pg.Surface((20,20))#正方形の空(透明）のSurface
     bomb_sfc.set_colorkey((0,0,0))
-    bomb_sfc = pg.image.load("ex04/bakudan.png")
-    bomb_sfc = pg.transform.rotozoom(bomb_sfc,0,0.15)
+    bomb_sfc = pg.image.load("ex04/bakudan.png")#爆弾画像読み込み
+    bomb_sfc = pg.transform.rotozoom(bomb_sfc,0,0.15)#爆弾大きさ変更
     # pg.draw.circle(bomb_sfc,(255,0,0),(10,10),10)
     bomb_rct = bomb_sfc.get_rect()
     bomb_rct.centerx = randint(0,scrn_rct.width)
     bomb_rct.centery = randint(0,scrn_rct.height)
     vx,vy = +1,+1
 
-    font = pg.font.Font(None,150)
+    font = pg.font.Font(None,150)#文字の設定
     txt = font.render("GAME OVER",True,(20,20,20))
         
     while True:
@@ -77,8 +77,8 @@ def main():
         scrn_sfc.blit(bomb_sfc,bomb_rct)
         
         if tori_rct.colliderect(bomb_rct):
-            scrn_sfc.blit(txt,(420,300))
-            time.sleep(2)
+            scrn_sfc.blit(txt,(420,300))#GAMEOVER表示
+            time.sleep(2)#処理一時停止
             # return
             
         pg.display.update()
