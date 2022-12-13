@@ -2,7 +2,17 @@ import pygame as pg
 import sys
 from random import *
 
+def check_bound(obj_rct,scr_rct):
+    #第一引数：こうかとんrectまたは爆弾rect
+    #第二引数：スクリーンrect
+    #範囲内なら＋１、範囲外ならー１
+    x,y = +1,+1
+    if obj_rct.left < scr_rct.left or scr_rct.right < obj_rct.right:
+        x = -1
+    if obj_rct.top < scr_rct.top or scr_rct.bottom < obj_rct.bottom:
+        y = -1
 
+    return x,y
 def main():
     clock = pg.time.Clock()
     pg.display.set_caption("逃げろこうかとん！")
@@ -23,6 +33,7 @@ def main():
     bomb_rct = bomb_sfc.get_rect()
     bomb_rct.centerx = randint(0,scrn_rct.width)
     bomb_rct.centery = randint(0,scrn_rct.height)
+    vx,vy = +1,+1
 
     while True:
         scrn_sfc.blit(pgbg_sfc,pgbg_rct)
@@ -39,10 +50,22 @@ def main():
         if key_dct[pg.K_RIGHT]:
             tori_rct.centerx += 1
         
+        if check_bound(tori_rct,scrn_rct) != (+1,+1):
+            if key_dct[pg.K_UP]:
+                tori_rct.centery += 1
+            if key_dct[pg.K_DOWN]:
+                tori_rct.centery -= 1
+            if key_dct[pg.K_LEFT]:
+                tori_rct.centerx +=1
+            if key_dct[pg.K_RIGHT]:
+                tori_rct.centerx -= 1
         scrn_sfc.blit(tori_sfc,tori_rct)
         
-        vx,vy = +1,+1
+        # vx,vy = +1,+1
         bomb_rct.move_ip(vx,vy)
+        x,y =  check_bound(bomb_rct,scrn_rct)
+        vx *= x
+        vy *= y
         scrn_sfc.blit(bomb_sfc,bomb_rct)
         
         pg.display.update()
