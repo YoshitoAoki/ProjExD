@@ -39,9 +39,7 @@ def main():
     vx,vy = +1,+1
 
 
-    font = pg.font.Font(None,150)#文字の設定
-    txt = font.render("GAME OVER",True,(20,20,20))
-        
+
     while True:
         scrn_sfc.blit(pgbg_sfc,pgbg_rct)
         for event in pg.event.get():
@@ -78,6 +76,8 @@ def main():
         scrn_sfc.blit(bomb_sfc,bomb_rct)
         
         if tori_rct.colliderect(bomb_rct):
+            font = pg.font.Font(None,150)#文字の設定
+            txt = font.render("GAME OVER",True,(20,20,20))
             scrn_sfc.blit(txt,(420,300))#GAMEOVER表示
             pg.display.update()
             time.sleep(2)
